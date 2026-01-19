@@ -90,16 +90,16 @@
         }
 
         if ($HasDiscount) {
-            echo "Has Discount: Yes";
+            echo " Has Discount: Yes";
         }
         else {
-            echo "Has Discount: No";
+            echo " Has Discount: No";
         }
         if ($IsPremiumMember) {
-            echo "Is Premium Member: Yes";
+            echo " Is Premium Member: Yes";
         }
         else {
-            echo "Is Premium Member: No";
+            echo " Is Premium Member: No";
         }
         ?>
     </div>
