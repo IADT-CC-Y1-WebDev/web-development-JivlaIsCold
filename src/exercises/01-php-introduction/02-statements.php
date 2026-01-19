@@ -122,7 +122,7 @@
         // TODO: Write your solution here
         $Number = 10;
         while ($Number >= 0) {
-            echo "$Number <br>";
+            echo "$Number <br>"; // Found about <br> from w3schools
             if ($Number == 0) {
                 echo "Blast off! <br>";
             }
