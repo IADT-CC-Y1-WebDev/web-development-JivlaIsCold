@@ -31,7 +31,7 @@
         $Age = 19;
         $City = "Dublin";
 
-        echo "My Name is $First $Last";
+        echo "My Name is $First $Last, i am $Age years old and I live in $City";
         ?> 
     </div>
 
