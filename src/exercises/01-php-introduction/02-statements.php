@@ -60,7 +60,31 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
+        $day = 2;
+
+        switch ($day) {
+            case 1:
+                echo "Weekday Day: Monday";
+                break;
+            case 2:
+                echo "Weekday Day: Tuesday";
+                break;
+            case 3:
+                echo "Weekday Day: Wednesday";
+                break;
+            case 4:
+                echo "Weekday Day: Thursday";
+                break;
+            case 5:
+                echo "Weekday Day: Friday";
+                break;
+            case 6:
+                echo "Weekday Day: Saturday";
+                break;
+            case 7:
+                echo "Weekend Day: Sunday";
+                break;
+        }
         ?>
     </div>
 
