@@ -120,6 +120,14 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $Number = 10;
+        while ($Number >= 0) {
+            echo "$Number";
+            $Number--;
+            if ($Number <= 0) {
+                echo "Blast off!";
+            }
+        }
         ?>
     </div>
 
