@@ -100,6 +100,11 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $X = 4;
+        for ($Y = 1; $Y <= 10; $Y++){
+            $Z = $X * $Y;
+            echo "$X x $Y = $Z";
+        }
         ?>
     </div>
 
