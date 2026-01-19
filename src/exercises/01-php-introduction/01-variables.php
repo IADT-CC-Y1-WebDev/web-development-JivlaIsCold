@@ -49,6 +49,18 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $Product1 = 20;
+        $Product2 = 12;
+        $Product3 = 30;
+
+        $Quantity1 = 1;
+        $Quantity2 = 3;
+        $Quantity3 = 10;
+
+        $FinalPrice = ($Product1 * $Quantity1) + ($Product2 * $Quantity2) + ($Product3 * $Quantity3);
+
+        echo $FinalPrice * 0.9;
+
         ?>
     </div>
 
