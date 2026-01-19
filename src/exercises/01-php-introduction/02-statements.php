@@ -103,7 +103,7 @@
         $X = 4;
         for ($Y = 1; $Y <= 10; $Y++){
             $Z = $X * $Y;
-            echo "$X x $Y = $Z";
+            echo "$X x $Y = $Z ";
         }
         ?>
     </div>
