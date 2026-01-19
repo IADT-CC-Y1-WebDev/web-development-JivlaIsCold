@@ -26,8 +26,13 @@
     <p class="output-label">Output:</p>
     <div class="output">
         <?php
-        // TODO: Write your solution here
-        ?>
+        $First = "Ben ";
+        $Last = "OConnor";
+        $Age = 19;
+        $City = "Dublin";
+
+        echo "My Name is $First $Last";
+        ?> 
     </div>
 
     <!-- Exercise 2 -->
