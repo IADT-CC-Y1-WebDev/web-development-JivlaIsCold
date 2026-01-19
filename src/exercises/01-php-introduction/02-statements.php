@@ -27,6 +27,23 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $age = 19;
+        $ageGroup = "";
+
+        if ($age >= 0 && $age  <= 12) {
+            $ageGroup = "Child";
+        }
+        elseif ($age  >= 13 && $age  <= 19) {
+            $ageGroup = "Teenager";
+        }
+        elseif ($age  >= 20 && $age <= 64) {
+            $ageGroup = "Adult";
+        }
+        elseif ($age <= 65) {
+            $ageGroup = "Senior"
+        }
+
+        echo $ageGroup
         ?>
     </div>
 
