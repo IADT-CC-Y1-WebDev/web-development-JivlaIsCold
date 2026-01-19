@@ -122,11 +122,12 @@
         // TODO: Write your solution here
         $Number = 10;
         while ($Number >= 0) {
-            echo "$Number";
-            $Number--;
-            if ($Number <= 0) {
-                echo "Blast off!";
+            echo "$Number <br>";
+            if ($Number == 0) {
+                echo "Blast off! <br>";
             }
+            $Number--;
+            
         }
         ?>
     </div>
