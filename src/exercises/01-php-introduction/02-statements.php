@@ -43,7 +43,7 @@
             $ageGroup = "Senior"
         }
 
-        echo $ageGroup
+        echo $ageGroup;
         ?>
     </div>
 
