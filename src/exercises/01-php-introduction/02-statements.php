@@ -39,8 +39,9 @@
         elseif ($age  >= 20 && $age <= 64) {
             $ageGroup = "Adult";
         }
+
         elseif ($age <= 65) {
-            $ageGroup = "Senior"
+            $ageGroup = "Senior";
         }
 
         echo $ageGroup;
