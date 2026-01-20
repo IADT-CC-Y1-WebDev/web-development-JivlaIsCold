@@ -49,6 +49,11 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+
+        $Name = $_GET["name"] ?? NULL;
+        if ($Name) {
+            print_r("Hello ". ucfirst($_GET["name"]));
+        }
         ?>
     </div>
 
