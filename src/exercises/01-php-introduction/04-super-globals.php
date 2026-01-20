@@ -71,6 +71,22 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $product = $_GET['product'] ?? NULL;
+        $quantity = $_GET['quantity'] ?? NULL;
+
+
+        if ($product && $quantity) {
+
+            if ($product >= 2) {
+               print_r("You ordered ". $quantity ." " .$product . "s");
+            }
+            else {
+                print_r("You ordered ". $quantity . $product);
+            }
+        }
+        else {
+            print_r("Error Msg");
+        }
         ?>
     </div>
 
