@@ -53,7 +53,7 @@
             "Name" => "Ben O Connor",
             "StudentId" => 00254975,
             "Course" => "Creative Computing",
-            "Grade" => "A",
+            "Grade" => "A"
         ];
 
         $Text = "{$Key["Name"]} student id is {$Key["StudenId"]} they are in {$Key["Course"]} with a grade of {$Key["Grade"]}";
