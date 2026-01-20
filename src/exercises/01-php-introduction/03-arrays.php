@@ -31,7 +31,7 @@
 
         $Amt = count($movies);
         for ($i = 0; $i < $Amt; $i++) {
-            echo $movies[$i];
+            echo $movies[$i]"<br>";
         }
 
         ?>
