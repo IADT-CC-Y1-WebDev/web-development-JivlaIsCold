@@ -49,16 +49,16 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        $Keys = [
+        $Key = [
             "Name" => "Ben O Connor",
-            "StudentId" => 00254975,
+            "StudentId" => "00254975",
             "Course" => "Creative Computing",
             "Grade" => "A",
         ];
 
-        $Text = "{$Key["Name"]} student id is {$Key["StudentId"]} they are in {$Key["Course"]} with a grade of {$Key["Grade"]}";
+        $Text = "{$Key["Name"]}'s student id is {$Key["StudentId"]} they are in {$Key["Course"]} with a grade of {$Key["Grade"]}";
 
-        echo $Text
+        echo $Text;
 
 
         ?>
@@ -77,6 +77,17 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+
+        $Countries = [
+            "Ireland" => "Dublin",
+            "France" => "Paris",
+            "United Kingdom" => "London",
+            "Germany" => "Berlin",
+            "Netherlands" => "Amsterdam"
+        ];
+        foreach ($Countries as $key => $Value) {
+            echo "Country: $key | Capital: $Value <br>";
+        }
         ?>
     </div>
 
@@ -94,6 +105,27 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $Menu = [
+            "Starters" => [
+                "Wings" => 10,
+                "Soup" => 8,
+                "Salad" => 10,
+            ],
+            "Main" => [
+                "Steak" => 48,
+                "Spagetti" => 24,
+                "Pizza" => 19,
+            ]
+            ];
+
+            foreach ($Menu as $Section => $Items){
+                echo "<p>" . ucfirst($Section) . " Products:  <p>";
+                foreach ($Items as $Food => $Price) {
+                    echo "<p>" . ucfirst($Food) . " Price: $$Price";
+                }
+            }
+
+
         ?>
     </div>
 
