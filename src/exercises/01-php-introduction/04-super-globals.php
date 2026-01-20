@@ -50,7 +50,7 @@
         <?php
         // TODO: Write your solution here
 
-        $Name = $_GET["name"] ?? NULL;
+        $Name = $_GET["name"] ?? NULL; //lowkey ai helped me fix error when theres no name on the url 
         if ($Name) {
             print_r("Hello ". ucfirst($_GET["name"]));
         }
