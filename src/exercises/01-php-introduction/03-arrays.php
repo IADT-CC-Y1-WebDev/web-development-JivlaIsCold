@@ -30,7 +30,7 @@
         $movies = array("Movie 1: Bullet Train", "Movie 2: The Matrix", "Movie 3: The Grinch", "Movie 4: Cars", "Movie 5: Wally");
 
         $Amt = count($movies);
-        for ($i = 1; $i < $Amt; $i++) {
+        for ($i = 0; $i < $Amt; $i++) {
             echo $movies[$i];
         }
 
