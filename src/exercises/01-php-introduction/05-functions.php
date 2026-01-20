@@ -25,6 +25,15 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+
+        function celsiusToFahrenheit($C) {
+            return ($C * 9/5) + 32;
+        }
+
+        for ($i = 10; $i <= 30; $i++) {
+            $F = celsiusToFahrenheit($i);
+            echo "Fahrenheit of $i is $F <br>";
+        }
         ?>
     </div>
 
@@ -41,6 +50,23 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        function calculateRectArea($x , $y = null) {
+            $type = gettype($x);
+            if ($type != "integer") {
+                print_r("Error wrong type.");
+                return;
+            }
+            if ($y === null) {
+                return $x * $x;
+            }
+            else {
+                return $x * $y;
+            }
+        }
+
+        $val = calculateRectArea(10,3);
+        print_r($val)
+
         ?>
     </div>
 
@@ -57,6 +83,19 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        function checkEvenOdd($number) {
+            $modulo = $number % 2;
+
+            if ($modulo == 0) {
+                return "even";
+            }
+            else {
+                return "odd";
+            }
+        }
+
+        $fnc = checkEvenOdd(10);
+        print_r($fnc);
         ?>
     </div>
 
@@ -73,6 +112,33 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+
+        function getArrayStats($array) {
+            $Min = null;
+            $Max = null;
+            $avg = null;
+
+            for ($i = 0; $i <= count($array); $i++) {
+                if ($i == 0) {
+                    $Min = $array[0];
+                    $Max = $array[0];
+                }
+
+                if ($Min >= $array[$i]) {
+                    $Min = $array[$i];
+                }
+                if ($Max <= $array[$i]) {
+                    $Max = $array[$i];
+                }
+            }
+
+            return [$Min, $Max];
+        }
+
+
+        $ar = [10,200,3,5,102];
+        $func = getArrayStats($ar);
+        print_r($func);
         ?>
     </div>
 
