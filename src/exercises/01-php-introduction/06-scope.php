@@ -28,6 +28,17 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+
+        $totalPoints = 0;
+        function counter($Amt){
+            global $totalPoints;
+            $totalPoints = $totalPoints + $Amt;
+            echo "TotalPoints is now $totalPoints <br> ";
+        }
+
+        counter(4);
+        counter(41);
+        counter(67);
         ?>
     </div>
 
@@ -44,6 +55,16 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+
+        function visitCounter() {
+            static $pageViews = 0;
+            $pageViews++;
+            echo "Visit Count: $pageViews <br>";
+        }
+
+        for ($i = 1; $i <=5; $i++) {
+            visitCounter();
+        }
         ?>
     </div>
 
