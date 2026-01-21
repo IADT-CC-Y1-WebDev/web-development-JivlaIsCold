@@ -116,23 +116,29 @@
         function getArrayStats($array) {
             $Min = null;
             $Max = null;
-            $avg = null;
+            $avg = 0;
+            
 
-            for ($i = 0; $i <= count($array); $i++) {
-                if ($i == 0) {
-                    $Min = $array[0];
-                    $Max = $array[0];
-                }
+            for ($i = 0; $i < count($array); $i++) {
+                // if ($i == 0) {
+                //     $Min = $array[0];
+                //     $Max = $array[0];
+                // }
 
-                if ($Min >= $array[$i]) {
-                    $Min = $array[$i];
-                }
-                if ($Max <= $array[$i]) {
-                    $Max = $array[$i];
-                }
+                // if ($Min >= $array[$i]) {
+                //     $Min = $array[$i];
+                // }
+                // if ($Max <= $array[$i]) {
+                //     $Max = $array[$i];
+                // }
+
+                $Min = min($array);
+                $Max = max($array);
+               
+               
             }
-
-            return [$Min, $Max];
+            $avg = array_sum($array) / count($array);
+            return [$Min, $Max, $avg];
         }
 
 
