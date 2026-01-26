@@ -82,6 +82,15 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $message = "Global";
+
+        function testScope() {
+            $message = "Local";
+            print_r($message ."<br>");
+        }
+
+        testScope();
+        print_r($message ."<br>");
         ?>
     </div>
 
