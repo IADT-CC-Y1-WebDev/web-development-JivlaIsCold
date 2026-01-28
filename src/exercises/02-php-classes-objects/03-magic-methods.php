@@ -33,6 +33,10 @@
         <?php
         // TODO: Write your solution here
         // require_once __DIR__ . '/classes/Student.php';
+        require_once __DIR__ . '/classes/Student.php';
+
+        $acc = new StudentAccount("Ben O Connor", "N00254975");
+
         ?>
     </div>
 
@@ -53,6 +57,12 @@
         <?php
         // TODO: Write your solution here
         // require_once __DIR__ . '/classes/Student.php';
+
+        require_once __DIR__ . '/classes/Student.php';
+
+        $acc = new StudentAccount("Ben O Connor", "N00254975");
+
+        echo $acc;
         ?>
     </div>
 
@@ -74,6 +84,19 @@
         <?php
         // TODO: Write your solution here
         // require_once __DIR__ . '/classes/Student.php';
+        require_once __DIR__ . '/classes/Student.php';
+
+        $Students = [
+            "Ben O Connor" => "N00254975",
+            "Alice Smith" => "N00254976",
+            "Bob Johnson" => "N00254977"
+        ];
+
+        
+        foreach ($Students as $name => $num) {
+            $student = new StudentAccount($name , $num); // ik im opening and closing accounts.....
+            echo $student . "<br>";
+        }
         ?>
     </div>
 
@@ -100,6 +123,20 @@
         // echo "Setting student1 to null...<br>";
         // $student1 = null;
         // echo "Script ending...<br>";
+
+        require_once __DIR__ . '/classes/Student.php';
+
+
+        echo "Creating Accounts<br>";
+        $acc1 = new StudentAccount("Ben O Connor", "N00254975");
+        $acc2 = new StudentAccount("Alice Smith", "N00254976");
+
+
+        echo "Setting acc1 to null <br>";
+
+        $acc1 = null;
+        
+
         ?>
     </div>
 
