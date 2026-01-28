@@ -23,10 +23,10 @@ class StudentAccount {
     }
 
 
-    public function __destruct() {
-        echo "Closing account for {$this->Name}<br>";
+    // public function __destruct() {
+    //     echo "Closing account for {$this->Name}<br>";
 
-    }
+    // }
     public function getName() {
         return $this->Name;
     }
@@ -34,3 +34,5 @@ class StudentAccount {
         return $this->Number;
     }
 }
+
+
