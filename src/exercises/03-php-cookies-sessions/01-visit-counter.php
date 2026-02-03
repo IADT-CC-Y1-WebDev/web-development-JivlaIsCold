@@ -173,7 +173,7 @@ setcookie("last_visit", $now, $expiry, "/");
             echo "Your last visit was: $lastVisit";
         }
         else {
-            "his is ur first visit";
+            "this is ur first visit";
         }
         // =====================================================================
         ?>
