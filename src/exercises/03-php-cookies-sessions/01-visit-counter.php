@@ -14,7 +14,15 @@
 // 3. Save the new count back to the cookie
 // -----------------------------------------------------------------------------
 // TODO Exercise 1: Write your solution here
-
+if (isset($_COOKIE["visit_count"])) {
+    $visitCount = $_COOKIE["visit_count"];
+}
+else {
+    $visitCount = 0;
+}
+$visitCount++;
+$expiry = time() +  60 * 60 * 24 * 30;
+setcookie("visit_count", $visitCount, $expiry, "/");
 // =============================================================================
 
 // =============================================================================
@@ -27,14 +35,27 @@
 // TODO Exercise 3: Write your solution here
 
 // =============================================================================
-
+if (isset($_GET["reset"])) {
+    $expiry = time() - (60 * 60);
+    setcookie("visit_count", '', $expiry, "/");
+    header("Location: 01-visit-counter.php");
+    exit();
+}
 // =============================================================================
 // Exercise 4: Track Last Visit Time (Bonus)
 // 1. Read the existing 'last_visit' cookie (if any)
 // 2. Set a new 'last_visit' cookie with the current timestamp
 // -----------------------------------------------------------------------------
 // TODO Exercise 4: Write your solution here
-
+if (isset($_COOKIE["last_visit"])) {
+    $lastVisit = $_COOKIE["last_visit"];
+}
+else {
+    $lastVisit = null;
+}
+$now = date("Y-m-d H:m:s");
+$expiry = time() + 60 * 60 * 24 * 30;
+setcookie("last_visit", $now, $expiry, "/");
 // =============================================================================
 ?>
 <!DOCTYPE html>
@@ -72,6 +93,7 @@
         // ---------------------------------------------------------------------
         // TODO Exercise 1: Write your solution here
 
+        echo "Visit Count = $visitCount";
         // =====================================================================
         ?>
     </div>
@@ -93,7 +115,19 @@
         // - "Welcome back!" if visitCount is greater than or equal to 10
         // ---------------------------------------------------------------------
         // TODO Exercise 2: Write your solution here
-        
+
+        if ($visitCount === 1) {
+            echo "Welcome first-time visitor!";
+        }
+        elseif ($visitCount > 1 && $visitCount < 10){
+            echo "Hello again!";
+        }
+        elseif ($visitCount >= 10){
+            echo "Welcome Back!";
+        }
+        else {
+            echo "Stop hacking!!!";
+        }
         // =====================================================================
         ?>
     </div>
@@ -135,7 +169,12 @@
         // Example output: "Your last visit was: 2024-01-15 10:30:45"
         // ---------------------------------------------------------------------
         // TODO Exercise 4: Write your solution here
-        
+        if ($lastVisit !== null) {
+            echo "Your last visit was: $lastVisit";
+        }
+        else {
+            "his is ur first visit";
+        }
         // =====================================================================
         ?>
     </div>
