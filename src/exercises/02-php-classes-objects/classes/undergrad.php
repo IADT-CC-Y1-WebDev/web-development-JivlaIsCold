@@ -9,7 +9,7 @@ class Undergrad extends StudentAccount {
 
 
      public function __construct($Name, $Num, $Course, $Year) {
-        echo "Constructing Profile";
+        echo "Constructing Profile <br>";
         parent::__construct($Name, $Num);
         
         $this->course = $Course;
@@ -20,8 +20,9 @@ class Undergrad extends StudentAccount {
 
     }
 
-
-
+    public function __toString() {
+        return "Name: {$this->Name}, Number: {$this->Number}, Course: {$this->course}, Year: {$this->year}";
+    }
     public function getCourse() {
         return $this->course;
     }

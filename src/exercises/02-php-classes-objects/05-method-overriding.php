@@ -33,6 +33,11 @@
         <?php
         // TODO: Write your solution here
         // require_once __DIR__ . '/classes/Undergrad.php';
+        require_once __DIR__ . '/classes/Undergrad.php';
+
+        $acc = new Undergrad("Ben O Connor", "N00254975", "Creative Computing", "2025");
+
+        echo $acc;
         ?>
     </div>
 
@@ -61,6 +66,12 @@
         <?php
         // TODO: Write your solution here
         // require_once __DIR__ . '/classes/Postgrad.php';
+        require_once __DIR__ . '/classes/postgrad.php';
+
+
+        $postgradAcc = new Postgrad("Ben O Connor", "N00254975", "IDKBRO", "IM THE GOAT");
+
+        echo $postgradAcc;
         ?>
     </div>
 
@@ -79,6 +90,18 @@
         // TODO: Write your solution here
         // require_once __DIR__ . '/classes/Undergrad.php';
         // require_once __DIR__ . '/classes/Postgrad.php';
+        require_once __DIR__ . '/classes/Undergrad.php';
+        require_once __DIR__ . '/classes/postgrad.php';
+
+        $accounts = [
+            new StudentAccount("Ben O Connor", "N00254975"),
+            new Undergrad("Ben O Connor", "N00254975", "Creative Computing", "2025"),
+            new Postgrad("Ben O Connor", "N00254975", "Idkbro", "sumSickTopic.lol")
+        ];
+
+        foreach($accounts as $ac) {
+            echo "$ac <br>";
+        }
         ?>
     </div>
 

@@ -37,6 +37,20 @@
         <?php
         // TODO: Write your solution here
         // require_once __DIR__ . '/classes/Student.php';
+
+        require_once __DIR__ . '/classes/Student.php';
+
+
+        echo "Count: ".StudentAccount::getCount() . "<br>";
+
+        $acc1 = new StudentAccount("Test1", "test1");
+        echo "Count: ".StudentAccount::getCount() . "<br>";
+
+        $acc2 = new StudentAccount("Test2", "test2");
+        echo "Count: ".StudentAccount::getCount() . "<br>";
+        $acc3 = new StudentAccount("Test3", "test3");
+        echo "Count: ".StudentAccount::getCount() . "<br>";
+
         ?>
     </div>
 
