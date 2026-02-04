@@ -86,6 +86,17 @@
         <?php
         // TODO: Write your solution here
         // require_once __DIR__ . '/classes/Student.php';
+        require_once __DIR__ . '/classes/Student.php';
+
+        $Ben = new StudentAccount("Ben", "n00254975");
+        $Finn = new StudentAccount("Finn", "n00234326");
+        $Ryan = new StudentAccount("Ryan", "n00222763");
+
+        $accs = StudentAccount::findAll();
+        $oneacc = StudentAccount::findByNumber("n00234326");
+
+        print_r($accs);
+        echo "One Account: $oneacc <br>";
         ?>
     </div>
 

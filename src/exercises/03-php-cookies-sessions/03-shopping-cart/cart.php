@@ -11,7 +11,9 @@ require_once './etc/config.php';
 // Exercise 1: Start the session
 // -----------------------------------------------------------------------------
 // TODO: Write your code here
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 // =============================================================================
 
 // =============================================================================
@@ -20,7 +22,7 @@ require_once './etc/config.php';
 // TODO: Write your code here
 
 // =============================================================================
-
+$cart = shoppingCart::getInstance();
 // =============================================================================
 // Exercise 3: Handle "Remove from Cart" action
 // When $_GET['remove'] is set:

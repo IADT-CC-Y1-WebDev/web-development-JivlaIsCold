@@ -3,7 +3,6 @@
 
 class StudentAccount {
     private static $accounts = [];
-    private static $count = 0;
 
     protected $Name;
     protected $Number;
@@ -17,7 +16,6 @@ class StudentAccount {
             throw new Exception("Student must have a Number");
         }
 
-        self::$count++;
         self::$accounts[$num] = $this;
 
        
@@ -49,7 +47,7 @@ class StudentAccount {
         return self::$accounts[$num] ?? null;
     }
     public static function getCount() {
-        return self::$count;
+        return count(self::$accounts);
     }
 }
 
