@@ -23,6 +23,7 @@ $errors = [];
 
 // Start the session
 startSession();
+//dd($_FILES, true);
 
 try {
     // =========================================================================
@@ -66,6 +67,7 @@ try {
         "isbn" => $_POST["isbn"] ?? null,
         "format_ids" => $_POST["format_ids"] ?? [],
         "description" => $_POST["description"] ?? null,
+        "cover" => $_FILES["cover"] ?? null,
 
     ];
 
@@ -90,6 +92,7 @@ try {
         "isbn" => "required|noempty|min:13|max:13",
         "format_ids" => "required|noempty|array|min:1|max:4",
         "description" => "required|noempty|min:10",
+        "cover" => "required|file|image|mimes:jpg,jpep,png|max_file_size:5242880",
 
     ];
     $validator = new Validator($data, $rules);
@@ -101,6 +104,8 @@ try {
         throw new Exception("Validation failed");
     }
 
+    $uploader = new ImageUpload();
+    $imageFilename = $uploader->process($_FILES["cover"]);
     echo "Validation successful!";
     // =========================================================================
     // STEP 9: File Uploads
