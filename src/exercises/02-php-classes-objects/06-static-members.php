@@ -117,8 +117,26 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Undergrad.php';
-        // require_once __DIR__ . '/classes/Postgrad.php';
+        require_once __DIR__ . '/classes/Undergrad.php';
+        require_once __DIR__ . '/classes/Postgrad.php';
+
+
+        $postgradAcc = new Postgrad("Ben", "225151", "test", "test");
+        $postgradAcc2 = new Postgrad("Ryan", "123456", "test1", "test1");
+
+
+        $undergrad = new Undergrad("Finn", "333333", "test2", "test2");
+        $undergrad2 = new Undergrad("Luke", "999999", "test3", "test3");
+
+        $Accs = StudentAccount::findAll();
+
+        $RandomAccount = StudentAccount::findByNumber("333333");
+
+
+        foreach ($Accs as $account) {
+            echo $account->getName() . "<br>";
+        }
+        echo "Random Account $RandomAccount <br>";
         ?>
     </div>
 
@@ -147,7 +165,9 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Student.php';
+        require_once __DIR__ . '/classes/Student.php';
+
+        
         ?>
     </div>
 
