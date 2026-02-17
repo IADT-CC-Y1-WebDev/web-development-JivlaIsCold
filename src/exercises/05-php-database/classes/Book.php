@@ -66,8 +66,8 @@ class Book
     // =========================================================================
     public static function findAll()
     {
-        $db = DB::getInstance()->getConnection();
-        $stmt = $db->prepare("SELECT * FROM books ORDER BY title");
+        // $db = DB::getInstance()->getConnection();
+        $stmt = $this->db->prepare("SELECT * FROM books ORDER BY title");
         $stmt->execute();
 
         $books = [];
@@ -101,21 +101,21 @@ class Book
     // Exercise 9: Finder Methods
     // =========================================================================
     public static function findByPublisher($publisherId)
-{
-    $db = DB::getInstance()->getConnection();
-    $stmt = $db->prepare("SELECT * FROM books WHERE publisher_id = :publisher_id");
-    $stmt->execute(["publisher_id" => $publisherId]);
+    {
+        $db = DB::getInstance()->getConnection();
+        $stmt = $db->prepare("SELECT * FROM books WHERE publisher_id = :publisher_id");
+        $stmt->execute(["publisher_id" => $publisherId]);
 
-    $rows = $stmt->fetchAll();
+        $rows = $stmt->fetchAll();
 
-    $books = [];
+        $books = [];
 
-    foreach ($rows as $row) {
-        $books[] = new Book($row);
+        foreach ($rows as $row) {
+            $books[] = new Book($row);
+        }
+
+        return $books;
     }
-
-    return $books;
-}
 
 
     // =========================================================================
