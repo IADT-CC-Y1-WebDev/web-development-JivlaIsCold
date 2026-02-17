@@ -47,6 +47,41 @@ catch (PDOException $e) {
             // 3. Execute with new description + timestamp
             // 4. Check rowCount()
             // 5. Fetch and display updated book
+
+            function getBookById($id) {
+                global $db ;
+
+                $stmt = $db->prepare("SELECT * FROM books WHERE id = :id");
+                $stmt->execute(['id' => $id]);
+                $book = $stmt->fetch();
+                return $book;
+            }
+
+            $book = getBookById(1);
+            if ($book) {
+                echo "Found: " . $book['title']. '<br>';
+            } else {
+                echo "Game not found";
+            }
+
+            $stmt = $db->prepare("
+                UPDATE books
+                SET description = :description
+                WHERE id = :id
+            ");
+            $stmt->execute([
+                'description' => $book["description"].'(Updated: ' . date('H:i:s') . ')',
+                'id' => 1,
+            ]);
+
+            $affected = $stmt->rowCount();
+
+            if ($affected === 0) {
+                echo "No rows updated - record may not exist";
+            } else {
+                echo "Updated $affected row(s) ". $book["description"];
+            }
+
             ?>
         </div>
     </div>
