@@ -66,8 +66,8 @@ class Book
     // =========================================================================
     public static function findAll()
     {
-        // $db = DB::getInstance()->getConnection();
-        $stmt = $this->db->prepare("SELECT * FROM books ORDER BY title");
+        $db = DB::getInstance()->getConnection();
+        $stmt = $db->prepare("SELECT * FROM books ORDER BY title");
         $stmt->execute();
 
         $books = [];
@@ -91,7 +91,7 @@ class Book
 
         $book = $stmt->fetch();
         if ($book) {
-            return new book($book);
+            return new Book($book);
         }
 
         return null;
