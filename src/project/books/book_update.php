@@ -67,7 +67,7 @@ try {
     $uploader = new ImageUpload();
     if ($uploader->hasFile('image')) {
         // Delete old image
-        $uploader->deleteImage($game->cover_filename);
+        $uploader->deleteImage($book->cover_filename);
         // Process new image
         $imageFilename = $uploader->process($_FILES['image']);
         // Check for processing errors
@@ -77,14 +77,14 @@ try {
     }
     
     // Update the game instance
-    $game->title = $data['title'];
-    $game->author = $data['author'];
-    $game->publisher_id = $data['publisher_id'];
-    $game->year = $data['year'];
-    $game->isbn = $data['isbn'];
-    $game->description = $data['description'];
+    $book->title = $data['title'];
+    $book->author = $data['author'];
+    $book->publisher_id = $data['publisher_id'];
+    $book->year = $data['year'];
+    $book->isbn = $data['isbn'];
+    $book->description = $data['description'];
     if ($imageFilename) {
-        $game->cover_filename = $cover_filename;
+        $book->cover_filename = $cover_filename;
     }
 
     // Save to database

@@ -3,30 +3,31 @@ require_once 'php/lib/config.php';
 require_once 'php/lib/session.php';
 require_once 'php/lib/forms.php';
 require_once 'php/lib/utils.php';
-
+ 
 startSession();
-
+ 
 try {
     if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
         throw new Exception('Invalid request method.');
     }
     if (!array_key_exists('id', $_GET)) {
-        throw new Exception('No game ID provided.');
+        throw new Exception('No book ID provided.');
     }
     $id = $_GET['id'];
-
+ 
     $book = Book::findById($id);
     if ($book === null) {
         throw new Exception("Book not found.");
     }
-    $publishers = Publisher::findAll();
-    if ($publishers === null) {
-        throw new Exception("Book not found.");
+ 
+    $bookFormats = Format::findByBookId($book->id);
+    $bookFormatsIds = [];
+    foreach ($bookFormats as $format) {
+        $bookFormatsIds[] = $format->id;
     }
-
-    
-
-  
+ 
+    $publishers = Publisher::findAll();
+    $formats = Format::findAll();
 }
 catch (PDOException $e) {
     setFlashMessage('error', 'Error: ' . $e->getMessage());
@@ -37,7 +38,7 @@ catch (PDOException $e) {
 <html lang="en">
     <head>
         <?php include 'php/inc/head_content.php'; ?>
-        <title>Edit Game</title>
+        <title>Edit Book</title>
     </head>
     <body>
         <div class="container">
@@ -60,41 +61,23 @@ catch (PDOException $e) {
                         </div>
                     </div>
                     <div class="input">
-                        <label class="special" for="author">Author:</label>
+                        <label class="special" for="release_date">Release Year:</label>
                         <div>
-                            <input type="text" id="author" name="author" value="<?= old('author', $book->author) ?>" required>
-                            <p><?= error('author') ?></p>
+                            <input type="number" id="release_date" name="release_date" value="<?= old('release_date', $book->release_date) ?>" required>
+                            <p><?= error('release_date') ?></p>
                         </div>
                     </div>
                     <div class="input">
-                        <label for="publisher_id">Publisher:</label>
-                        <select id="publisher_id" name="publisher_id">
-                        <option value="">-- Select Publisher --</option>
-                
-                    
-                        <?php foreach ($publishers as $pub): ?>
-                            <option value="<?= $pub->id ?>" <?= chosen('publisher_id', $pub->id) ? "selected" : ""?>>
-                        <?= h($pub->Name) ?>
-                        </option>
-                        <?php endforeach; ?>
-                    </select>
-
-                    <?php if (error('publisher_id')): ?>
-                        <p class="error"><?= error('publisher_id') ?></p>
-                    <?php endif; ?>
-                    </div>
-                    <div class="input">
-                        <label class="special" for="year">Year:</label>
+                        <label class="special" for="publisher_id">Publisher:</label>
                         <div>
-                            <textarea id="year" name="year" required><?= old('year', $book->year) ?></textarea>
-                            <p><?= error('year') ?></p>
-                        </div>
-                    </div>
-                    <div class="input">
-                        <label class="special" for="isbn">Isbn:</label>
-                        <div>
-                            <textarea id="isbn" name="isbn" required><?= old('isbn', $book->isbn) ?></textarea>
-                            <p><?= error('isbn') ?></p>
+                            <select id="publisher_id" name="publisher_id" required>
+                                <?php foreach ($publishers as $publisher) { ?>
+                                    <option value="<?= h($publisher->id) ?>" <?= chosen('publisher_id', $publisher->id, $book->publisher_id) ? "selected" : "" ?>>
+                                        <?= h($publisher->Name) ?>
+                                    </option>
+                                <?php } ?>
+                            </select>
+                            <p><?= error('publisher_id') ?></p>
                         </div>
                     </div>
                     <div class="input">
@@ -104,8 +87,24 @@ catch (PDOException $e) {
                             <p><?= error('description') ?></p>
                         </div>
                     </div>
-                    
-                    <div><img src="images/<?= $book->cover_filename ?>" /></div>
+                    <div class="input">
+                        <label class="special">Formats:</label>
+                        <div>
+                            <?php foreach ($formats as $format) { ?>
+                                <div>
+                                    <input type="checkbox"
+                                        id="format_<?= h($format->id) ?>"
+                                        name="format_ids[]"
+                                        value="<?= h($format->id) ?>"
+                                        <?= chosen('format_ids', $format->id, $bookFormatsIds) ? "checked" : "" ?>
+                                    >
+                                    <label for="format_<?= h($format->id) ?>"><?= h($format->name) ?></label>
+                                </div>
+                            <?php } ?>
+                        </div>
+                        <p><?= error('format_ids') ?></p>
+                    </div>
+                    <div><img src="images/<?= $book->image_filename ?>" /></div>
                     <div class="input">
                         <label class="special" for="image">Image (optional):</label>
                         <div>

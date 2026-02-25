@@ -22,7 +22,7 @@ catch (PDOException $e) {
             <div class="width-12 header">
                 <?php require 'php/inc/flash_message.php'; ?>
                 <div class="button">
-                    <a href="game_create.php">Add New Book</a>
+                    <a href="book_create.php">Add New Book</a>
                 </div>
             </div>
         </div>
