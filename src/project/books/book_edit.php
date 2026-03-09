@@ -27,6 +27,7 @@ try {
     }
  
     $publishers = Publisher::findAll();
+    
     $formats = Format::findAll();
 }
 catch (PDOException $e) {
@@ -61,10 +62,10 @@ catch (PDOException $e) {
                         </div>
                     </div>
                     <div class="input">
-                        <label class="special" for="release_date">Release Year:</label>
+                        <label class="special" for="year">Release Year:</label>
                         <div>
-                            <input type="number" id="release_date" name="release_date" value="<?= old('release_date', $book->release_date) ?>" required>
-                            <p><?= error('release_date') ?></p>
+                            <input type="number" id="year" name="year" value="<?= old('year', $book->year) ?>" required>
+                            <p><?= error('year') ?></p>
                         </div>
                     </div>
                     <div class="input">
@@ -78,6 +79,13 @@ catch (PDOException $e) {
                                 <?php } ?>
                             </select>
                             <p><?= error('publisher_id') ?></p>
+                        </div>
+                    </div>
+                      <div class="input">
+                        <label class="special" for="isbn">Isbn:</label>
+                        <div>
+                            <textarea id="isbn" name="isbn" required><?= old('isbn', $book->isbn) ?></textarea>
+                            <p><?= error('isbn') ?></p>
                         </div>
                     </div>
                     <div class="input">
@@ -104,12 +112,12 @@ catch (PDOException $e) {
                         </div>
                         <p><?= error('format_ids') ?></p>
                     </div>
-                    <div><img src="images/<?= $book->image_filename ?>" /></div>
+                    <div><img src="images/<?= $book->cover_filename ?>" /></div>
                     <div class="input">
-                        <label class="special" for="image">Image (optional):</label>
+                        <label class="special" for="cover">Image (optional):</label>
                         <div>
-                            <input type="file" id="image" name="image" accept="image/*">
-                            <p><?= error('image') ?></p>
+                            <input type="file" id="cover" name="cover" accept="image/*">
+                            <p><?= error('cover') ?></p>
                         </div>
                     </div>
                     <div class="input">
