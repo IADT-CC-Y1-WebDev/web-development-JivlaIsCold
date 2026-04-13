@@ -19,6 +19,7 @@ try {
 
     // Get form data
     $data = [
+        'id' => $_POST['id'] ?? null,
         "title" => $_POST["title"] ?? null,
         "author" => $_POST["author"] ?? null,
         "publisher_id" => $_POST["publisher_id"] ?? null,
@@ -32,10 +33,11 @@ try {
 
     // Define validation rules
       $rules = [
-        "title" => "required|noempty|min:5|max:255",
+        'id' => 'required|integer',
+        "title" => "required|noempty|min:4|max:255",
         "author" => "required|noempty|min:5|max:255",
         "publisher_id" => "required|noempty|integer",
-        "year" => "required|noempty|integer|minvalue:1900|maxvalue:" . $year,
+        "year" => "required|noempty|integer|minvalue:1900|maxvalue:2026",
         "isbn" => "required|noempty|min:13|max:13",
         "format_ids" => "required|noempty|array|min:1|max:4",
         "description" => "required|noempty|min:10",
@@ -83,6 +85,7 @@ try {
     $book->year = $data['year'];
     $book->isbn = $data['isbn'];
     $book->description = $data['description'];
+    
     if ($imageFilename) {
         $book->cover_filename = $cover_filename;
     }

@@ -3,7 +3,7 @@ class Publisher
 {
     // public properties for each database column
     public $id;
-    public $Name;
+    public $name;
  
     // private $db property for database connection
     private $db;
@@ -13,7 +13,7 @@ class Publisher
         $this->db = DB::getInstance()->getConnection();
  
         $this->id             = $data['id'] ?? null;
-        $this->Name          = $data['Name'] ?? null;
+        $this->name          = $data['name'] ?? null;
     }
  
     public static function findAll()

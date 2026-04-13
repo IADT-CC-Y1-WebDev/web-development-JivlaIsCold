@@ -4,8 +4,8 @@ require_once 'php/lib/utils.php';
 
 try {
     $books = Book::findAll();
-    // $genres = Genre::findAll();
-    // $platforms = Platform::findAll();
+    $publishers = Publisher::findAll();
+    $formats = Format::findAll();
 } 
 catch (PDOException $e) {
     die("<p>PDO Exception: " . $e->getMessage() . "</p>");
