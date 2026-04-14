@@ -31,6 +31,83 @@ $publishers = [
 <head>
     <?php include 'php/inc/head_content.php'; ?>
     <title>Create Book</title>
+    <style>
+        form {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            max-width: 520px;
+        }
+
+        .input {
+            display: flex;
+            gap: 20px;
+        }
+
+        .input label.form-label {
+            width: 108px;
+            display: flex;
+            justify-content: flex-end;
+            color: #252525;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+        .form-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        
+        label {
+            font-weight: 600;
+        }
+
+        input,
+        select,
+        textarea {
+            font-size: 1rem;
+            padding: 0.35rem 0.5rem;
+        }
+
+        textarea {
+            min-height: 80px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .input .platform-options label {
+            font-weight: normal;
+            margin-left: 0.25rem;
+        }
+
+        .error {
+            color: #b00020;
+            font-size: 0.85rem;
+        }
+
+        .input-error {
+            border-color: #b00020;
+            background: #fff5f5;
+        }
+
+        .error-summary {
+            border-radius: 6px;
+            border: 1px solid #b00020;
+            background: #fff5f5;
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        #submit_btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -92,7 +169,7 @@ $publishers = [
                         <span id="year_error" class="error"></span>
                     </div>
                 </div>
-                <div class="isbn">
+                <div class="input">
                     <label class="special" for="isbn">isbn:</label>
                     <div>
                         <input type="number" id="isbn" name="isbn" 
@@ -152,7 +229,7 @@ $publishers = [
         </div>
     </div>
 
-<script src="../Javascript/FormValidation.js"></script>
+<script src="Javascript/FormValidation.js"></script>
 </body>
 </html>
 <?php

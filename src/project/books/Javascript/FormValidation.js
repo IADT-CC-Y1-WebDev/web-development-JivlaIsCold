@@ -31,13 +31,13 @@ function addError(fieldName, message) {
 
 function showErrorSummaryTop() {
     const messages = Object.values(errors);
-
+    
     if (messages.length === 0) {
         errorSummaryTop.style.display = 'none';
         errorSummaryTop.innerHTML = '';
         return;
     }
-
+    
     errorSummaryTop.innerHTML =
         '<strong>Please fix the following:</strong><ul>' +
         messages.map(m => `<li>${m}</li>`).join('') +
@@ -77,7 +77,7 @@ function onSubmitForm(evt) {
     let titleMax = titleInput.dataset.maxlength || 255;
     let descMin = 10;
 
-    // Title
+    
     if (!isRequired(titleInput.value)) {
         addError('title', 'Title is required!');
     } else if (!isMinLength(titleInput.value, titleMin)) {
@@ -91,29 +91,29 @@ function onSubmitForm(evt) {
         addError('author', 'Author is required!');
     }
 
-    // Publisher
+ 
     if (!isRequired(publisherInput.value)) {
         addError('publisher', 'Publisher is required!');
     }
 
-    // Year
+
     if (!isRequired(yearInput.value)) {
         addError('year', 'Year is required!');
     }
 
-    // ISBN
+    
     if (!isRequired(isbnInput.value)) {
         addError('isbn', 'ISBN is required!');
     }
 
-    // Description
+    
     if (!isRequired(descriptionInput.value)) {
         addError('description', 'Description is required!');
     } else if (!isMinLength(descriptionInput.value, descMin)) {
         addError('description', `Description must be at least ${descMin} characters!`);
     }
 
-    // Format (checkboxes)
+    
     let formatSelected = false;
     for (let i = 0; i < formatInputs.length; i++) {
         if (formatInputs[i].checked) {
@@ -132,6 +132,7 @@ function onSubmitForm(evt) {
     }
 
     showFieldErrors();
+    
     showErrorSummaryTop();
 
     if (Object.keys(errors).length === 0) {

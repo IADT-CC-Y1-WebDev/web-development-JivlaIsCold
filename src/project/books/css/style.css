@@ -190,3 +190,11 @@ form {
 	color: #252525;
 	font-weight: 900;
 }
+
+.form-group label{
+	width: 108px;
+	display: flex;
+	justify-content: flex-end;
+	color: #252525;
+	font-weight: 900;
+}

@@ -20,7 +20,7 @@ class Publisher
     {
         $db = DB::getInstance()->getConnection();
  
-        $stmt = $db->prepare("SELECT * FROM publishers ORDER BY Name");
+        $stmt = $db->prepare("SELECT * FROM publishers ORDER BY name");
         $stmt->execute();
  
         $publishers = [];
@@ -48,7 +48,7 @@ class Publisher
     public static function findByPublisher($publisherId)
     {
         $db = DB::getInstance()->getConnection();
-        $stmt = $db->prepare("SELECT * FROM publishers WHERE publisher_id = :publisher_id ORDER BY Name");
+        $stmt = $db->prepare("SELECT * FROM publishers WHERE publisher_id = :publisher_id ORDER BY name");
         $stmt->execute(['publisher_id' => $publisherId]);
  
         $publishers = [];
@@ -65,22 +65,22 @@ class Publisher
         if ($this->id) {
             $stmt = $this->db->prepare("
                 UPDATE publishers
-                SET Name = :Name
+                SET name = :name
                 WHERE id = :id
             ");
  
             $params = [
-                'Name'          => $this->Name,
+                'name'          => $this->name,
                 'id'             => $this->id
             ];
         } else {
             $stmt = $this->db->prepare("
-                INSERT INTO publishers (Name)
-                VALUES (:Name)
+                INSERT INTO publishers (name)
+                VALUES (:name)
             ");
  
             $params = [
-                'Name'          => $this->Name,
+                'name'          => $this->name,
             ];
         }
        
@@ -119,7 +119,7 @@ class Publisher
     {
         return [
             'id'             => $this->id,
-            'Name'          => $this->Name,
+            'name'          => $this->name,
         ];
     }
 }

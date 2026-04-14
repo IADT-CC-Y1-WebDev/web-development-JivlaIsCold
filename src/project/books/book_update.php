@@ -62,7 +62,19 @@ try {
     if (!$book) {
         throw new Exception('Book not found.');
     }
-
+ 
+    // Verify publisher exists
+    $publisher = Publisher::findById($data['publisher_id']);
+    if (!$publisher) {
+        throw new Exception('Selected publisher does not exist.');
+    }
+ 
+    // Verify platforms exist
+    foreach ($data['format_ids'] as $formatId) {
+        if (!Format::findById($formatId)) {
+            throw new Exception('One or more selected platforms do not exist.');
+        }
+    }
   
     // Process the uploaded image (validation already completed)
     $imageFilename = null;
@@ -92,7 +104,13 @@ try {
 
     // Save to database
     $book->save();
-
+    BookFormat::deleteByBook($book->id);
+    // Create new platform associations
+    if (!empty($data['format_ids']) && is_array($data['format_ids'])) {
+        foreach ($data['format_ids'] as $formatId) {
+            BookFormat::create($book->id, $formatId);
+        }
+    }
    
     // Clear any old form data
     clearFormData();
