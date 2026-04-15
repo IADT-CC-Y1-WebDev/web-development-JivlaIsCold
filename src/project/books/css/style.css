@@ -22,7 +22,9 @@ body {
 	flex-direction: column;
 	justify-content: space-between;
 }
-
+.card.hidden {
+    display: none;
+}
 .card h2 {
 	font-size: 28px;
 	line-height: 32px;
