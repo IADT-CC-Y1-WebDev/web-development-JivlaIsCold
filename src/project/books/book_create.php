@@ -120,7 +120,7 @@ $publishers = [
         </div>
 
         <div class="width-12">
-            <form id="book_form" action="book_store.php" method="POST" enctype="multipart/form-data" novalidate>
+            <form id="book_form" action="book_store.php" method="POST" enctype="multipart/form-data" novalidate class="create">
                 <div id="error_summary_top" class="error-summary" style="display:none" role="alert"></div>
                 <div class="input">
                     <label class="special" for="title">Title:</label>

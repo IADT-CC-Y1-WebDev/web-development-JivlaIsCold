@@ -69,12 +69,20 @@ function isMaxLength(value, max) {
     return String(value).trim().length <= max;
 }
 
+function isExactLength(value, length) {
+    return String(value).trim().length === length;
+}
+
 function onSubmitForm(evt) {
     evt.preventDefault();
     errors = {};
 
-    let titleMin = titleInput.dataset.minlength || 3;
+    let titleMin = titleInput.dataset.minlength || 5;
     let titleMax = titleInput.dataset.maxlength || 255;
+
+    let authorMin = authorInput.dataset.minlength || 5;
+    let authorMax = authorInput.dataset.maxlength || 255;
+
     let descMin = 10;
 
     
@@ -89,6 +97,10 @@ function onSubmitForm(evt) {
     
     if (!isRequired(authorInput.value)) {
         addError('author', 'Author is required!');
+    } else if (!isMinLength(authorInput.value, authorMin)) {
+        addError('author', `Author must be at least ${authorMin} characters.`);
+    } else if (!isMaxLength(authorInput.value, authorMax)) {
+        addError('author', `Author must be at most ${authorMax} characters.`);
     }
 
  
@@ -104,9 +116,12 @@ function onSubmitForm(evt) {
     
     if (!isRequired(isbnInput.value)) {
         addError('isbn', 'ISBN is required!');
+    } else if (typeof isbnInput.value !== 'number') {
+        addError('isbn', 'ISBN must be a number!');
+    } else if (!isExactLength(isbnInput.value, 13)) {
+        addError('isbn', 'ISBN must be exactly 13 characters!');
     }
 
-    
     if (!isRequired(descriptionInput.value)) {
         addError('description', 'Description is required!');
     } else if (!isMinLength(descriptionInput.value, descMin)) {
@@ -127,7 +142,7 @@ function onSubmitForm(evt) {
     }
 
 
-    if (!imageInput.files || imageInput.files.length === 0) {
+    if ((!imageInput.files || imageInput.files.length === 0) && bookform.classList.contains('create')) {
         addError('image', 'Image is required.');
     }
 

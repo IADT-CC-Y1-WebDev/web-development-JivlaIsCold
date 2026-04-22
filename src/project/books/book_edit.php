@@ -40,6 +40,83 @@ catch (PDOException $e) {
     <head>
         <?php include 'php/inc/head_content.php'; ?>
         <title>Edit Book</title>
+        <style>
+        form {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            max-width: 520px;
+        }
+
+        .input {
+            display: flex;
+            gap: 20px;
+        }
+
+        .input label.form-label {
+            width: 108px;
+            display: flex;
+            justify-content: flex-end;
+            color: #252525;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+        .form-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        
+        label {
+            font-weight: 600;
+        }
+
+        input,
+        select,
+        textarea {
+            font-size: 1rem;
+            padding: 0.35rem 0.5rem;
+        }
+
+        textarea {
+            min-height: 80px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .input .platform-options label {
+            font-weight: normal;
+            margin-left: 0.25rem;
+        }
+
+        .error {
+            color: #b00020;
+            font-size: 0.85rem;
+        }
+
+        .input-error {
+            border-color: #b00020;
+            background: #fff5f5;
+        }
+
+        .error-summary {
+            border-radius: 6px;
+            border: 1px solid #b00020;
+            background: #fff5f5;
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        #submit_btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
     </head>
     <body>
         <div class="container">
@@ -50,7 +127,9 @@ catch (PDOException $e) {
                 <h1>Edit Book</h1>
             </div>
             <div class="width-12">
-                <form action="book_update.php" method="POST" enctype="multipart/form-data">
+                <form id="book_form" action="book_update.php" method="POST" enctype="multipart/form-data" novalidate class="edit">
+                    <div id="error_summary_top" class="error-summary" style="display:none" role="alert"></div>
+
                     <div class="input">
                         <input type="hidden" name="id" value="<?= h($book->id) ?>">
                     </div>
@@ -59,6 +138,8 @@ catch (PDOException $e) {
                         <div>
                             <input type="text" id="title" name="title" value="<?= old('title', $book->title) ?>" required>
                             <p><?= error('title') ?></p>
+                            <span id="title_error" class="error"></span>
+
                         </div>
                     </div>
                     <div class="input">
@@ -66,6 +147,7 @@ catch (PDOException $e) {
                         <div>
                             <input type="text" id="author" name="author" value="<?= old('author', $book->author) ?>" required>
                             <p><?= error('author') ?></p>
+                            <span id="author_error" class="error"></span>
                         </div>
                     </div>
                     
@@ -74,6 +156,7 @@ catch (PDOException $e) {
                         <div>
                             <input type="number" id="year" name="year" value="<?= old('year', $book->year) ?>" required>
                             <p><?= error('year') ?></p>
+                            <span id="year_error" class="error"></span>
                         </div>
                     </div>
                     <div class="input">
@@ -87,6 +170,7 @@ catch (PDOException $e) {
                                 <?php } ?>
                             </select>
                             <p><?= error('publisher_id') ?></p>
+                            <span id="publisher_error" class="error"></span>
                         </div>
                     </div>
                       <div class="input">
@@ -94,6 +178,7 @@ catch (PDOException $e) {
                         <div>
                             <textarea id="isbn" name="isbn" required><?= old('isbn', $book->isbn) ?></textarea>
                             <p><?= error('isbn') ?></p>
+                            <span id="isbn_error" class="error"></span>
                         </div>
                     </div>
                     <div class="input">
@@ -101,6 +186,7 @@ catch (PDOException $e) {
                         <div>
                             <textarea id="description" name="description" required><?= old('description', $book->description) ?></textarea>
                             <p><?= error('description') ?></p>
+                            <span id="description_error" class="error"></span>
                         </div>
                     </div>
                     <div class="input">
@@ -119,6 +205,7 @@ catch (PDOException $e) {
                             <?php } ?>
                         </div>
                         <p><?= error('format_ids') ?></p>
+                        <span id="format_error" class="error"></span>
                     </div>
                     <div><img src="images/<?= $book->cover_filename ?>" /></div>
                     <div class="input">
@@ -126,16 +213,20 @@ catch (PDOException $e) {
                         <div>
                             <input type="file" id="cover" name="cover" accept="image/*">
                             <p><?= error('cover') ?></p>
+                            <span id="cover_error" class="error"></span>
+
                         </div>
                     </div>
                     <div class="input">
-                        <button class="button" type="submit">Update Book</button>
+                        <button id="submit_btn" class="button" type="submit">Update Book</button>
                         <div class="button"><a href="index.php">Cancel</a></div>
                     </div>
                 </form>
             </div>
         </div>
+        <script src="Javascript/FormValidation.js"></script>
     </body>
+    
 </html>
 <?php
 // Clear form data after displaying

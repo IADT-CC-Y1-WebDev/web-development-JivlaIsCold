@@ -41,7 +41,7 @@ try {
         "isbn" => "required|noempty|min:13|max:13",
         "format_ids" => "required|noempty|array|min:1|max:4",
         "description" => "required|noempty|min:10",
-        "cover" => "required|file|image|mimes:jpg,jpep,png|max_file_size:5242880",
+        "cover" => "file|image|mimes:jpg,jpep,png|max_file_size:5242880",
 
     ];
 
@@ -79,11 +79,11 @@ try {
     // Process the uploaded image (validation already completed)
     $imageFilename = null;
     $uploader = new ImageUpload();
-    if ($uploader->hasFile('image')) {
+    if ($uploader->hasFile('cover')) {
         // Delete old image
         $uploader->deleteImage($book->cover_filename);
         // Process new image
-        $imageFilename = $uploader->process($_FILES['image']);
+        $imageFilename = $uploader->process($_FILES['cover']);
         // Check for processing errors
         if (!$imageFilename) {
             throw new Exception('Failed to process and save the image.');
@@ -99,7 +99,7 @@ try {
     $book->description = $data['description'];
     
     if ($imageFilename) {
-        $book->cover_filename = $cover_filename;
+        $book->cover_filename = $imageFilename;
     }
 
     // Save to database
