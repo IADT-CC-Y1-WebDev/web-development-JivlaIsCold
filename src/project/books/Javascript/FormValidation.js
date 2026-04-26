@@ -116,7 +116,7 @@ function onSubmitForm(evt) {
     
     if (!isRequired(isbnInput.value)) {
         addError('isbn', 'ISBN is required!');
-    } else if (typeof isbnInput.value !== 'number') {
+    } else if (Number.isNaN(Number(isbnInput.value))) {
         addError('isbn', 'ISBN must be a number!');
     } else if (!isExactLength(isbnInput.value, 13)) {
         addError('isbn', 'ISBN must be exactly 13 characters!');
